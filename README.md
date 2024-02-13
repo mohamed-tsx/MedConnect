@@ -18,7 +18,3 @@ MedConnectHub is a platform designed to simplify the healthcare experience by co
 ## Contributions
 
 We welcome contributions from the community! Whether you're a developer, designer, or healthcare enthusiast, feel free to contribute by opening issues, submitting pull requests, and providing feedback.
-
-## License
-
-This project is licensed under the [Your chosen open-source license].
