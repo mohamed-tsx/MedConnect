@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="flex justify-between items-center">
-      <p>Logo</p>
+      <Link to="/">∆edConnect</Link>
       <ul className="flex gap-4">
         <li>
           <Link to="/">Home</Link>
@@ -13,7 +13,7 @@ const Header = () => {
         </li>
       </ul>
       <div className="">
-        <Link to="/" className="p-2 flex bg-black text-white rounded-md">
+        <Link to="/signup" className="p-2 flex bg-black text-white rounded-md">
           <p>Join Us</p>
         </Link>
       </div>
