@@ -11,7 +11,7 @@ import {
 const SignIn = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const apiUrl = "http://localhost:4321/users/login/";
+  const apiUrl = "api/users/login/";
   const [formData, setFormData] = useState({
     email: "",
     password: "",

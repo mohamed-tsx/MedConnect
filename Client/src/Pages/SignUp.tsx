@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const apiUrl = "http://localhost:4321/users/";
+  const apiUrl = "api/users/";
   const [formData, setFormData] = useState({
     username: "",
     email: "",
