@@ -68,7 +68,7 @@ const SignUp = () => {
         email: "",
         password: "",
       });
-      navigate("/");
+      navigate("/signin");
     } catch (error) {
       dispatch(signUpFailed(true));
       SetError("Something went wrong!");
@@ -145,7 +145,7 @@ const SignUp = () => {
       {error && <p className="text-xs text-red-600">{error}</p>}
       <p className="text-sm mt-2">
         Already have an account{" "}
-        <Link to="/" className="text-blue-500">
+        <Link to="/signin" className="text-blue-500">
           Sign In
         </Link>
       </p>
