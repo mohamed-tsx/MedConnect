@@ -105,7 +105,6 @@ const Login = asyncHandler(async (req, res) => {
   const token = generateToken(user.id, user.email);
 
   const { password: pass, ...rest } = user;
-  console.log(rest);
 
   //If the password is correct log in the user and return success response
   res.cookie("access_token", token, { httpOnly: true }).status(200).json({

@@ -51,5 +51,12 @@ export const authSlice = createSlice({
   },
 });
 
-export const { signUpStart, signUpSuccess, signUpFailed } = authSlice.actions;
+export const {
+  signUpStart,
+  signUpSuccess,
+  signUpFailed,
+  signInFailed,
+  signInStart,
+  signInSuccess,
+} = authSlice.actions;
 export default authSlice.reducer;

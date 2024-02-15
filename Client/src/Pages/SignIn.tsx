@@ -1,8 +1,17 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../Redux/Hooks/reduxhooks";
+import {
+  signInStart,
+  signUpFailed,
+  signUpSuccess,
+} from "../Redux/Features/authSlice";
 
 const SignIn = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const apiUrl = "http://localhost:4321/users/login/";
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -15,21 +24,48 @@ const SignIn = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add form submission logic here
 
-    if (formData.email === "" || formData.password === "") {
-      SetError("Please fill all the required fields");
-      return;
+    try {
+      dispatch(signInStart());
+      console.log("Form submitted:", formData);
+
+      if (formData.email === "" || formData.password === "") {
+        SetError("Please fill all the required fields");
+        return;
+      }
+
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      console.log(res);
+      const data = await res.json();
+
+      console.log(data);
+      if (data.success === false) {
+        dispatch(signUpFailed(true));
+        SetError(data.message);
+        return;
+      }
+      dispatch(signUpFailed(false));
+
+      dispatch(signUpSuccess(data.rest));
+      SetError(null);
+
+      setFormData({
+        email: "",
+        password: "",
+      });
+      navigate("/");
+    } catch (error) {
+      dispatch(signUpFailed(true));
+      SetError("Something went wrong!");
     }
-    SetError(null);
-    console.log("Form submitted:", formData);
-    // Reset form data if needed
-    setFormData({
-      email: "",
-      password: "",
-    });
   };
 
   const togglePasswordVisibility = () => {
