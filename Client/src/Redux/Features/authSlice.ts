@@ -35,6 +35,19 @@ export const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    signInStart: (state) => {
+      state.loading = true;
+    },
+    signInSuccess: (state, action: PayloadAction<authType["user"]>) => {
+      state.loading = false;
+      state.user = action.payload;
+      state.error = false;
+    },
+    signInFailed: (state, action: PayloadAction<authType["error"]>) => {
+      state.user = null;
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
