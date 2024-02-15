@@ -49,10 +49,12 @@ const Register = asyncHandler(async (req, res) => {
     },
   });
 
+  const { password: pass, ...rest } = newUser;
+
   //Return new user with success response
   res.status(200).json({
     message: "User created successfully",
-    newUser,
+    rest,
   });
 });
 

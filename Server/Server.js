@@ -2,12 +2,14 @@ const express = require("express");
 const dotenv = require("dotenv");
 const userRoutes = require("./Src/Routes/userRoutes");
 const errorMiddleWare = require("./Src/Middlewares/errorMiddleware");
+const cors = require("cors");
 dotenv.config();
 
 const PORT = process.env.PORT;
 const server = express();
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use(cors());
 
 server.use("/", userRoutes);
 server.use(errorMiddleWare);
