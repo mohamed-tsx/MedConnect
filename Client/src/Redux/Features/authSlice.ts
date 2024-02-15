@@ -21,15 +21,15 @@ export const authSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    signInStart: (state) => {
+    signUpStart: (state) => {
       state.loading = true;
     },
-    signInSuccess: (state, action: PayloadAction<authType["user"]>) => {
+    signUpSuccess: (state, action: PayloadAction<authType["user"]>) => {
       state.loading = false;
       state.user = action.payload;
       state.error = false;
     },
-    sigInFailed: (state, action: PayloadAction<authType["error"]>) => {
+    signUpFailed: (state, action: PayloadAction<authType["error"]>) => {
       state.user = null;
       state.loading = false;
       state.error = action.payload;
@@ -37,5 +37,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { signInStart, signInSuccess, sigInFailed } = authSlice.actions;
+export const { signUpStart, signUpSuccess, signUpFailed } = authSlice.actions;
 export default authSlice.reducer;
