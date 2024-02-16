@@ -17,11 +17,14 @@ const SignUp = () => {
     username: "",
     email: "",
     password: "",
+    role: "patient",
   });
   const [error, SetError] = useState<string | null>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -42,7 +45,7 @@ const SignUp = () => {
         return;
       }
 
-      const res = await fetch(apiUrl, {
+      const res = await fetch(`${apiUrl}?role=${formData.role}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,6 +53,7 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       });
       console.log(res);
+      console.log(formData.role);
       const data = await res.json();
 
       console.log(data);
@@ -67,6 +71,7 @@ const SignUp = () => {
         username: "",
         email: "",
         password: "",
+        role: "patient",
       });
       navigate("/signin");
     } catch (error) {
@@ -113,6 +118,21 @@ const SignUp = () => {
               placeholder="email"
               className="p-2 border rounded-lg"
             />
+          </div>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="role" className="text-xs">
+              role <span className="text-red-600">*</span>
+            </label>
+            <select
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="p-2 border rounded-lg"
+            >
+              <option value="patient">Patient</option>
+              <option value="hospital">Hospital</option>
+            </select>
           </div>
           <div className="flex flex-col space-y-1 relative">
             <label htmlFor="password" className="text-xs">

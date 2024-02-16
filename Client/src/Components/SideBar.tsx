@@ -4,8 +4,7 @@ import { FiHome, FiInfo } from "react-icons/fi";
 const links = [
   { to: "/", label: "Home", icon: <FiHome /> },
   { to: "/about", label: "About", icon: <FiInfo /> },
-  { to: "/signup", label: "Join Us" }, // Added Join Us link
-  // Add more links as needed
+  { to: "/signup", label: "Join Us" },
 ];
 
 const SideBar = () => {
