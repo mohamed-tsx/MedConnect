@@ -10,6 +10,7 @@ const jwt = require("jsonwebtoken");
 const Register = asyncHandler(async (req, res) => {
   //Fetch data from the request body
   const { username, email, password } = req.body;
+  const { role } = req.query;
 
   //Check if the data is valid and throw an error if it is not valid
   if (!email || !password || !username) {
@@ -22,6 +23,13 @@ const Register = asyncHandler(async (req, res) => {
   if (!emailRegex.test(email)) {
     res.status(403);
     throw new Error("Invalid email address");
+  }
+
+  const lowerCaseRole = role.toLowerCase();
+  // Check if the user role is valid
+  if (lowerCaseRole !== "hospital" && lowerCaseRole !== "patient") {
+    res.status(403);
+    throw new Error("Role isn't valid");
   }
 
   // Check if a user with the same email already exists
@@ -46,6 +54,7 @@ const Register = asyncHandler(async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      role: lowerCaseRole,
     },
   });
 
