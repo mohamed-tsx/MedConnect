@@ -1,34 +1,76 @@
 import { Link, useLocation } from "react-router-dom";
 import { FiHome, FiInfo } from "react-icons/fi";
-
-const links = [
-  { to: "/", label: "Home", icon: <FiHome /> },
-  { to: "/about", label: "About", icon: <FiInfo /> },
-  { to: "/signup", label: "Join Us" },
-];
+import { useAppSelector } from "../Redux/Hooks/reduxhooks";
+import { RootState } from "../Redux/store";
 
 const SideBar = () => {
   const location = useLocation();
+  const { user } = useAppSelector((state: RootState) => state.user);
 
   return (
     <div className="fixed inset-y-0 right-0 top-14 bg-white text-black z-50 overflow-y-auto w-48 shadow-md">
       <ul className="p-4">
-        {links.map((link) => (
+        <li
+          className={`mb-3 hover:bg-gray-200 ${
+            location.pathname === "/" ? "bg-gray-200" : ""
+          }`}
+        >
+          <Link to="/" className="flex items-center space-x-2 p-2 rounded">
+            <span className="text-xl">
+              <FiHome />
+            </span>
+            <span className="text-sm">Home</span>
+          </Link>
+        </li>
+        <li
+          className={`mb-3 hover:bg-gray-200 ${
+            location.pathname === "/about" ? "bg-gray-200" : ""
+          }`}
+        >
+          <Link to="/about" className="flex items-center space-x-2 p-2 rounded">
+            <span className="text-xl">
+              <FiInfo />
+            </span>
+            <span className="text-sm">About</span>
+          </Link>
+        </li>
+        <li
+          className={`mb-3 hover:bg-gray-200 ${
+            location.pathname === "/signup" ? "bg-gray-200" : ""
+          }`}
+        >
+          <Link
+            to="/signup"
+            className="flex items-center space-x-2 p-2 rounded"
+          >
+            <span className="text-sm">Join Us</span>
+          </Link>
+        </li>
+
+        {user && user.role === "hospital" ? (
           <li
-            key={link.to}
             className={`mb-3 hover:bg-gray-200 ${
-              location.pathname === link.to ? "bg-gray-200" : ""
+              location.pathname === "/dashboard" ? "bg-gray-200" : ""
             }`}
           >
             <Link
-              to={link.to}
+              to="/dashboard"
               className="flex items-center space-x-2 p-2 rounded"
             >
-              {link.icon && <span className="text-xl">{link.icon}</span>}
-              <span className="text-sm">{link.label}</span>
+              Dashboard
             </Link>
           </li>
-        ))}
+        ) : (
+          <li
+            className={`mb-3 hover:bg-gray-200 ${
+              location.pathname === "/hospitals-list" ? "bg-gray-200" : ""
+            }`}
+          >
+            <Link to="/" className="flex items-center space-x-2 p-2 rounded">
+              Hospitals List
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );

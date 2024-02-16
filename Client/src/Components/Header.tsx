@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import SideBar from "./SideBar";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
+import { useAppSelector } from "../Redux/Hooks/reduxhooks";
+import { RootState } from "../Redux/store";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useAppSelector((state: RootState) => state.user);
   return (
     <div className="flex justify-between items-center">
       <Link to="/">∆edConnect</Link>
@@ -16,6 +19,15 @@ const Header = () => {
         <li>
           <Link to="/">About</Link>
         </li>
+        {user && user.role === "hospital" ? (
+          <li>
+            <Link to="/">Dashboard</Link>
+          </li>
+        ) : (
+          <li>
+            <Link to="/">Hostpitals List</Link>
+          </li>
+        )}
       </ul>
       <div className="hidden md:block">
         <Link to="/signup" className="p-2 flex bg-black text-white rounded-md">
