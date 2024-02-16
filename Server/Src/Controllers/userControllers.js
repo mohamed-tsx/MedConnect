@@ -125,8 +125,8 @@ const Login = asyncHandler(async (req, res) => {
     });
 });
 
-const generateToken = (id) => {
-  const payload = { id };
+const generateToken = (id, email) => {
+  const payload = { id, email };
   const secret = process.env.JWT_SECRET;
   return jwt.sign(payload, secret, {
     expiresIn: "1d",
