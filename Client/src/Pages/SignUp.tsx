@@ -86,7 +86,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="p-24 max-w-xl mx-auto">
+    <div className="p-24 max-w-2xl mx-auto">
       <h1 className="text-xl text-center">∆edConnect</h1>
       <div>
         <p className="font-semibold mt-10">Create your account</p>
