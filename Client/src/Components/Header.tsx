@@ -19,14 +19,18 @@ const Header = () => {
         <li>
           <Link to="/">About</Link>
         </li>
-        {user && user.role === "hospital" ? (
-          <li>
-            <Link to="/">Dashboard</Link>
-          </li>
+        {user ? (
+          user.role === "hospital" ? (
+            <li>
+              <Link to="/">Dashboard</Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/">Hospitals List</Link>
+            </li>
+          )
         ) : (
-          <li>
-            <Link to="/">Hostpitals List</Link>
-          </li>
+          ""
         )}
       </ul>
       <div className="hidden md:block">

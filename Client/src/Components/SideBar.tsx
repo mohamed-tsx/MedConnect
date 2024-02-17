@@ -47,29 +47,33 @@ const SideBar = () => {
           </Link>
         </li>
 
-        {user && user.role === "hospital" ? (
-          <li
-            className={`mb-3 hover:bg-gray-200 ${
-              location.pathname === "/dashboard" ? "bg-gray-200" : ""
-            }`}
-          >
-            <Link
-              to="/dashboard"
-              className="flex items-center space-x-2 p-2 rounded"
+        {user ? (
+          user.role === "hospital" ? (
+            <li
+              className={`mb-3 hover:bg-gray-200 ${
+                location.pathname === "/dashboard" ? "bg-gray-200" : ""
+              }`}
             >
-              Dashboard
-            </Link>
-          </li>
+              <Link
+                to="/dashboard"
+                className="flex items-center space-x-2 p-2 rounded"
+              >
+                Dashboard
+              </Link>
+            </li>
+          ) : (
+            <li
+              className={`mb-3 hover:bg-gray-200 ${
+                location.pathname === "/hospitals-list" ? "bg-gray-200" : ""
+              }`}
+            >
+              <Link to="/" className="flex items-center space-x-2 p-2 rounded">
+                Hospitals List
+              </Link>
+            </li>
+          )
         ) : (
-          <li
-            className={`mb-3 hover:bg-gray-200 ${
-              location.pathname === "/hospitals-list" ? "bg-gray-200" : ""
-            }`}
-          >
-            <Link to="/" className="flex items-center space-x-2 p-2 rounded">
-              Hospitals List
-            </Link>
-          </li>
+          ""
         )}
       </ul>
     </div>
