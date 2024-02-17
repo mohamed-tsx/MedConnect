@@ -125,6 +125,23 @@ const Login = asyncHandler(async (req, res) => {
     });
 });
 
+// @description Register new user
+// @Method POST
+// @Route /user/signout/
+// @Access Public
+const Signout = (req, res) => {
+  try {
+    res.clearCookie("token");
+    res.status(200).json({
+      message: "User Signed Out",
+      success: true,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+  y;
+};
+
 const generateToken = (id, email) => {
   const payload = { id, email };
   const secret = process.env.JWT_SECRET;
@@ -135,4 +152,5 @@ const generateToken = (id, email) => {
 module.exports = {
   Register,
   Login,
+  Signout,
 };
