@@ -13,7 +13,7 @@ model User {
   email    String   @unique
   password String
   role     userRole @default(patient)
-  avatar   String
+  avatar   String   @default("https://www.call2let.com/images/agents/default.jpeg")
   doctors  Doctor[]
 }
 
