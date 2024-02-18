@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const userRoutes = require("./Src/Routes/userRoutes");
+const doctorRoutes = require("./Src/Routes/doctorRoutes");
 const errorMiddleWare = require("./Src/Middlewares/errorMiddleware");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -20,6 +21,7 @@ server.use(express.json());
 server.use(cookieParser({}));
 
 server.use("/api/", userRoutes);
+server.use("/api/doctors/", doctorRoutes);
 server.use(errorMiddleWare);
 
 server.listen(PORT, () => {
