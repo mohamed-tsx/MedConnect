@@ -34,7 +34,6 @@ const SignUp = () => {
 
     try {
       dispatch(signUpStart());
-      console.log("Form submitted:", formData);
 
       if (
         formData.email === "" ||
@@ -52,11 +51,8 @@ const SignUp = () => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(res);
-      console.log(formData.role);
       const data = await res.json();
 
-      console.log(data);
       if (data.success === false) {
         dispatch(signUpFailed(true));
         SetError(data.message);

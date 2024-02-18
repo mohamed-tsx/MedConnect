@@ -29,7 +29,6 @@ const SignIn = () => {
 
     try {
       dispatch(signInStart());
-      console.log("Form submitted:", formData);
 
       if (formData.email === "" || formData.password === "") {
         SetError("Please fill all the required fields");
@@ -43,10 +42,8 @@ const SignIn = () => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(res);
       const data = await res.json();
 
-      console.log(data);
       if (data.success === false) {
         dispatch(signUpFailed(true));
         SetError(data.message);
