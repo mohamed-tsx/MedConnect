@@ -8,6 +8,7 @@ interface authType {
     username: string;
     email: string;
     role: string;
+    avatar: string;
   } | null;
   loading: boolean;
   error: boolean;

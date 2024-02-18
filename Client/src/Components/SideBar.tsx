@@ -11,12 +11,11 @@ import {
 
 const SideBar = () => {
   const location = useLocation();
-  const { user } = useAppSelector((state: RootState) => state.user);
+  const { user } = useAppSelector((state: RootState) => state?.user);
   const apiUrl = "api/users/signout";
   const dispatch = useAppDispatch();
 
   const handleUserSignOut = async () => {
-    console.log("first user sign out");
     try {
       dispatch(signOutStart());
       const res = await fetch(apiUrl);
@@ -92,13 +91,25 @@ const SideBar = () => {
           }`}
         >
           {user ? (
-            <button
-              className="flex items-center space-x-2 p-2 rounded"
-              onClick={handleUserSignOut}
-            >
-              <IoLogOutOutline />
-              <span className="text-sm">Sign Out</span>
-            </button>
+            <div className="text-sm space-y-4">
+              <div className="flex items-center gap-2">
+                <img
+                  src={user.avatar}
+                  alt="profile photo"
+                  width={30}
+                  height={30}
+                  className="rounded-full"
+                />
+                <p>{user.username}</p>
+              </div>
+              <button
+                className="p-2 flex bg-black text-white rounded-md gap-2 items-center"
+                onClick={handleUserSignOut}
+              >
+                <IoLogOutOutline />
+                Sign Out
+              </button>
+            </div>
           ) : (
             <Link
               to="/signup"

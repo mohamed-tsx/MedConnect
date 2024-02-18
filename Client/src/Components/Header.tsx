@@ -56,15 +56,25 @@ const Header = () => {
           ""
         )}
       </ul>
-      <div className="hidden md:block gap-2">
+      <div className="hidden md:block gap-3">
         {user ? (
-          <button
-            className="p-2 flex bg-black text-white rounded-md gap-2 items-center"
-            onClick={handleUserSignOut}
-          >
-            <IoLogOutOutline />
-            Sign Out
-          </button>
+          <div className="flex gap-2 items-center text-sm">
+            <p>{user.username}</p>
+            <img
+              src={user.avatar}
+              alt="profile photo"
+              width={30}
+              height={30}
+              className="rounded-full"
+            />
+            <button
+              className="p-2 flex bg-black text-white rounded-md gap-2 items-center"
+              onClick={handleUserSignOut}
+            >
+              <IoLogOutOutline />
+              Sign Out
+            </button>
+          </div>
         ) : (
           <Link
             to="/signup"
