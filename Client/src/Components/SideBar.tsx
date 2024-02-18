@@ -11,7 +11,7 @@ import {
 
 const SideBar = () => {
   const location = useLocation();
-  const { user } = useAppSelector((state: RootState) => state?.user);
+  const { user } = useAppSelector((state: RootState) => state.user);
   const apiUrl = "api/users/signout";
   const dispatch = useAppDispatch();
 
