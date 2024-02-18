@@ -3,8 +3,8 @@ import Home from "./Pages/Home";
 import Header from "./Components/Header";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
-import Dashboard from "./Components/Dashboard";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   return (
