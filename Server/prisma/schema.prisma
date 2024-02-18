@@ -23,7 +23,7 @@ model Doctor {
   hospitalId     String
   specialization String
   description    String
-  avatar         String @default("https://www.call2let.com/images/agents/default.jpeg")
+  avatar         String @default("https://mhchealthcare.org/wp-content/uploads/2019/05/doctor-avatar-1.jpg")
   hospital       User   @relation(fields: [hospitalId], references: [id])
 }
 

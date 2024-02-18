@@ -5,7 +5,7 @@ import { useAppSelector } from "../Redux/Hooks/reduxhooks";
 const ProtectedRoute = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
 
-  return user && user.role === "hostpial" ? (
+  return user && user.role === "hospital" ? (
     <Outlet />
   ) : (
     <Navigate to={"signin"} />
