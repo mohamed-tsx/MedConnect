@@ -21,21 +21,18 @@ const Verify = asyncHandler(async (req, res, next) => {
       });
 
       if (!user) {
-        return res.status(401).json({
-          message: "Authenticatin failed: User not found",
-        });
+        res.status(401);
+        throw new Error("Authenticatin failed: User not found");
       }
       req.user = user;
       next();
     } catch (error) {
-      return res.status(401).json({
-        message: "Autherization failed: Invalid token",
-      });
+      res.status(401);
+      throw new Error("Autherization failed: Invalid token");
     }
   if (!token) {
-    res.status(401).json({
-      message: "Authorization failed: No token provided",
-    });
+    res.status(401);
+    throw new Error("Authorization failed: No token provided");
   }
 });
 

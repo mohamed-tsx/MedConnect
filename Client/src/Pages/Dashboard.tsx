@@ -1,28 +1,24 @@
 import { useState } from "react";
 import AddDoctorModal from "../Components/AddDoctorModal"; // Adjust the path based on your project structure
 
-const Dashboard = ({ onDoctorAdded, hospitalId }: any) => {
+const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleDoctorAdded = (newDoctor: any) => {
-    // Your logic for handling the addition of a new doctor
-    console.log("New Doctor Added:", newDoctor);
-  };
-
   return (
-    <div>
+    <div className="flex flex-col mt-10">
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="bg-black text-white px-4 py-2 rounded hover:bg-gray-700 float-left"
         onClick={() => setShowModal(true)}
       >
         Add New Doctor
       </button>
+      <div>
+        <hr className="mt-5" />
+      </div>
 
       <AddDoctorModal
         showModal={showModal}
         onClose={() => setShowModal(false)}
-        onDoctorAdded={handleDoctorAdded}
-        hospitalId={hospitalId}
       />
     </div>
   );

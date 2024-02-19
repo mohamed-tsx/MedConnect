@@ -14,19 +14,16 @@ const isHospital = asyncHandler(async (req, res, next) => {
 
   // Check if the user exists
   if (!user) {
-    res.status(401).json({
-      message: "User not found",
-    });
+    res.status(401);
+    throw new Error("User not found");
   }
 
   //Check if the user role is owner
   if (user.role === "hospital") {
     next();
   } else {
-    res.status(401).json({
-      success: false,
-      error: "You are not authorized to perform this action",
-    });
+    res.status(401);
+    throw new Error("You are not authorized to perform this action");
   }
 });
 
@@ -42,19 +39,16 @@ const isPatient = asyncHandler(async (req, res, next) => {
 
   // Check if the user exists
   if (!user) {
-    res.status(401).json({
-      message: "User not found",
-    });
+    res.status(401);
+    throw new Error("User not found");
   }
 
   // Check if the user role is renter
   if (user.role === "patient") {
     next();
   } else {
-    res.status(401).json({
-      success: false,
-      error: "You are not authorized to perform this action",
-    });
+    res.status(401);
+    throw new Error("You are not authorized to perform this action");
   }
 });
 

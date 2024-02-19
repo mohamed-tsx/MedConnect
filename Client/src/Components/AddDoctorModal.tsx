@@ -1,31 +1,37 @@
 // AddDoctorModal.js
 
 import { useState, ChangeEvent, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   name: string;
   specialization: string;
   description: string;
 }
+interface Doctor {
+  id: string;
+  name: string;
+  hospitalId: string;
+  specialization: string;
+  description: string;
+  avatar: string;
+}
 
 interface AddDoctorModalProps {
   showModal: boolean;
   onClose: () => void;
-  onDoctorAdded: (newDoctor: any) => void; // Replace 'any' with the actual type of newDoctor
-  hospitalId: string;
 }
 
 const AddDoctorModal: React.FC<AddDoctorModalProps> = ({
   showModal,
   onClose,
-  onDoctorAdded,
-  hospitalId,
 }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     specialization: "",
     description: "",
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,6 +42,7 @@ const AddDoctorModal: React.FC<AddDoctorModalProps> = ({
       [name]: value,
     }));
   };
+  const [error, setError] = useState("");
 
   const handleAddDoctor = async (e: FormEvent) => {
     e.preventDefault();
@@ -49,18 +56,17 @@ const AddDoctorModal: React.FC<AddDoctorModalProps> = ({
         },
         body: JSON.stringify({
           ...formData,
-          hospitalId,
         }),
       });
-
-      if (!response.ok) {
-        throw new Error("Error adding doctor");
+      if (response.statusText === "Unauthorized") {
+        navigate("/signin");
       }
+      const result = await response.json();
 
-      const newDoctor = await response.json();
-
-      // Notify the parent component that a new doctor has been added
-      onDoctorAdded(newDoctor);
+      if (!result.success) {
+        setError(result.message);
+      }
+      // API request was successful
 
       // Clear the form fields
       setFormData({
@@ -72,7 +78,7 @@ const AddDoctorModal: React.FC<AddDoctorModalProps> = ({
       // Close the modal after adding a doctor
       onClose();
     } catch (error) {
-      console.error("Error adding doctor:", error);
+      setError("Something went wrong");
     }
   };
 
@@ -127,6 +133,7 @@ const AddDoctorModal: React.FC<AddDoctorModalProps> = ({
                 Close
               </button>
             </form>
+            {error && <p className="text-red-600 text-sm">{error}</p>}
           </div>
         </div>
       )}
