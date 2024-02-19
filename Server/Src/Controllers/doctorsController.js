@@ -36,7 +36,16 @@ const allDoctorOfThisHospital = asyncHandler(async (req, res) => {
   res.status(200).json(doctors);
 });
 
+const allHospitaLs = asyncHandler(async (req, res) => {
+  const all = await Prisma.user.findMany({
+    where: { role: "hospital" },
+  });
+
+  res.status(200).json(all);
+});
+
 module.exports = {
   create,
   allDoctorOfThisHospital,
+  allHospitaLs,
 };

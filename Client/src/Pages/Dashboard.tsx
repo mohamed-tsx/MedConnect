@@ -15,7 +15,7 @@ const Dashboard = () => {
       <div>
         <hr className="mt-5" />
       </div>
-
+      
       <AddDoctorModal
         showModal={showModal}
         onClose={() => setShowModal(false)}
