@@ -46,14 +46,12 @@ const allHospitaLs = asyncHandler(async (req, res) => {
 
 const allDoctorOfParticularHospital = asyncHandler(async (req, res) => {
   const { hospitalId } = req.query;
-  // console.log(req.query);
-  console.log(hospitalId);
 
   const doctors = await Prisma.doctor.findMany({
     where: { hospitalId },
   });
 
-  res.status(200).json(doctors);
+  res.status(200).json({ success: true, doctors });
 });
 
 module.exports = {

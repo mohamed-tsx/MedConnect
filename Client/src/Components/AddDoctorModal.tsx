@@ -63,8 +63,9 @@ const AddDoctorModal: React.FC<AddDoctorModalProps> = ({
       }
       const result = await response.json();
 
-      if (!result.success) {
+      if (result.success === false) {
         setError(result.message);
+        return;
       }
       // API request was successful
 

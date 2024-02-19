@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddDoctorModal from "../Components/AddDoctorModal"; // Adjust the path based on your project structure
+import HosptialDoctors from "./HosptialDoctors";
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,7 +16,7 @@ const Dashboard = () => {
       <div>
         <hr className="mt-5" />
       </div>
-      
+      <HosptialDoctors />
       <AddDoctorModal
         showModal={showModal}
         onClose={() => setShowModal(false)}
