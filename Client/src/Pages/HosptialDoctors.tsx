@@ -1,7 +1,6 @@
 // Add CSS classes for styling
 import { useEffect, useState } from "react";
 import HospitalDoctor from "./HospitalDoctor";
-import { userRole } from "@prisma/client";
 import { useAppSelector } from "../Redux/Hooks/reduxhooks";
 import { RootState } from "../Redux/store";
 
