@@ -1,7 +1,11 @@
-import React from "react";
+import HospitalsLists from "../Components/HospitalsLists";
 
 const HospitalsList = () => {
-  return <div>HospitalsList</div>;
+  return (
+    <div>
+      <HospitalsLists />
+    </div>
+  );
 };
 
 export default HospitalsList;
