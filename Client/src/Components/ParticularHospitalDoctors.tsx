@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../Redux/Hooks/reduxhooks";
-import { RootState } from "../Redux/store";
 import { useParams } from "react-router-dom";
 import ParticularHospitalDoctor from "./ParticularHospitalDoctor";
 
