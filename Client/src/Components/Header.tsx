@@ -45,7 +45,7 @@ const Header = () => {
         {user ? (
           user.role === "hospital" ? (
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
           ) : (
             <li>
