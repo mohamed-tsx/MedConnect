@@ -6,6 +6,7 @@ import SignIn from "./Pages/SignIn";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
 import HospitalsList from "./Pages/HospitalsList";
+import ParticularHospitalDoctors from "./Components/ParticularHospitalDoctors";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route path="/hospitalsList" element={<HospitalsList />} />
+        <Route
+          path="/doctors/:hospitalId"
+          element={<ParticularHospitalDoctors />}
+        />
       </Routes>
     </div>
   );
