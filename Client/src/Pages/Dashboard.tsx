@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col mt-10">
       <button
-        className="bg-black text-white px-4 py-2 rounded hover:bg-gray-700 float-left"
+        className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-700 float-left"
         onClick={() => setShowModal(true)}
       >
         Add New Doctor

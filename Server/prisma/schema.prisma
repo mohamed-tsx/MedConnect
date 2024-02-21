@@ -28,14 +28,12 @@ model Doctor {
   hospital       User   @relation(fields: [hospitalId], references: [id])
 }
 
-// schema.prisma
-
 model Appointment {
   id          String   @id @default(uuid())
   date        DateTime
   patientId   String
   doctorId    String
-  description String?
+  description String
   doctor      User     @relation(fields: [doctorId], references: [id])
 }
 

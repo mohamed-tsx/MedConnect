@@ -33,12 +33,9 @@ const ParticularHospitalDoctor: React.FC<{ doctor: Doctor }> = ({ doctor }) => {
             <span className="text-xs">FaahFaahin: </span> {doctor.description}
           </p>
         )}
-        <Link
-          to="/dashboard"
-          className="p-2 rounded-md mt-4 bg-black text-white text-center hover:bg-gray-900 transition"
-        >
+        <button className="p-2 rounded-md mt-4 bg-black text-white text-center hover:bg-gray-900 transition">
           Book this Doctor
-        </Link>
+        </button>
       </div>
     </div>
   );

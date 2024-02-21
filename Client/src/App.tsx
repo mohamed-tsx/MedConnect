@@ -7,6 +7,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
 import HospitalsList from "./Pages/HospitalsList";
 import ParticularHospitalDoctors from "./Components/ParticularHospitalDoctors";
+import MyAppointments from "./Pages/MyAppointments";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           path="/doctors/:hospitalId"
           element={<ParticularHospitalDoctors />}
         />
+        <Route path="/appointments" element={<MyAppointments />} />
       </Routes>
     </div>
   );

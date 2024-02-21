@@ -44,13 +44,23 @@ const Header = () => {
         </li>
         {user ? (
           user.role === "hospital" ? (
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
+            <>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/appointments">Recent Appointments</Link>
+              </li>
+            </>
           ) : (
-            <li>
-              <Link to="/hospitalsList">Hospitals List</Link>
-            </li>
+            <>
+              <li>
+                <Link to="/hospitalsList">Hospitals List</Link>
+              </li>
+              <li>
+                <Link to="/appointments">My Appointments</Link>
+              </li>
+            </>
           )
         ) : (
           ""
