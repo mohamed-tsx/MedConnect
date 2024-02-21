@@ -19,22 +19,25 @@ model User {
 }
 
 model Doctor {
-  id             String @id @default(uuid())
+  id             String        @id @default(uuid())
   name           String
   hospitalId     String
   specialization String
   description    String
-  avatar         String @default("https://mhchealthcare.org/wp-content/uploads/2019/05/doctor-avatar-1.jpg")
-  hospital       User   @relation(fields: [hospitalId], references: [id])
+  avatar         String        @default("https://mhchealthcare.org/wp-content/uploads/2019/05/doctor-avatar-1.jpg")
+  hospital       User          @relation(fields: [hospitalId], references: [id])
+  Appointments   Appointment[]
 }
 
 model Appointment {
-  id          String   @id @default(uuid())
-  date        DateTime
-  patientId   String
-  doctorId    String
-  description String
-  doctor      User     @relation(fields: [doctorId], references: [id])
+  id               String   @id @default(uuid())
+  date             DateTime @default(now())
+  patientId        String
+  doctorId         String
+  description      String
+  verificationCode Int      @default(autoincrement())
+  Doctor           Doctor   @relation(fields: [doctorId], references: [id])
+  User             User     @relation(fields: [patientId], references: [id])
 }
 
 enum userRole {
