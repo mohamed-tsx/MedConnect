@@ -46,6 +46,8 @@ const HosptialDoctors = () => {
       <h2 className="text-3xl font-semibold mb-4">
         {user?.username}'s Doctors
       </h2>
+      <p>You have {allDoctors.length} actively working in this hospital</p>
+      <hr className="mt-4 mb-3" />
       {loading ? (
         <p className="text-gray-700 text-sm">Loading...</p>
       ) : (
