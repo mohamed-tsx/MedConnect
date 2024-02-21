@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(uuid())
-  username String
-  email    String   @unique
-  password String
-  role     userRole @default(patient)
-  avatar   String   @default("https://www.call2let.com/images/agents/default.jpeg")
-  doctors  Doctor[]
+  id           String        @id @default(uuid())
+  username     String
+  email        String        @unique
+  password     String
+  role         userRole      @default(patient)
+  avatar       String        @default("https://www.call2let.com/images/agents/default.jpeg")
+  doctors      Doctor[]
+  Appointments Appointment[]
 }
 
 model Doctor {
@@ -25,6 +26,17 @@ model Doctor {
   description    String
   avatar         String @default("https://mhchealthcare.org/wp-content/uploads/2019/05/doctor-avatar-1.jpg")
   hospital       User   @relation(fields: [hospitalId], references: [id])
+}
+
+// schema.prisma
+
+model Appointment {
+  id          String   @id @default(uuid())
+  date        DateTime
+  patientId   String
+  doctorId    String
+  description String?
+  doctor      User     @relation(fields: [doctorId], references: [id])
 }
 
 enum userRole {
