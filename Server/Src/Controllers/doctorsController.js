@@ -31,6 +31,7 @@ const allDoctorOfThisHospital = asyncHandler(async (req, res) => {
 
   const doctors = await Prisma.doctor.findMany({
     where: { hospitalId },
+    include: { Appointments: true },
   });
 
   res.status(200).json(doctors);

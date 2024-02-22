@@ -8,6 +8,15 @@ interface Doctor {
   id: string;
   name: string;
   specialization: string;
+  Appointments: Appointment[];
+}
+interface Appointment {
+  id: string;
+  date: string;
+  patientId: string;
+  doctorId: string;
+  description: string;
+  verificationCode: number;
 }
 
 const HospitalDoctor: React.FC<{ doctor: Doctor }> = ({ doctor }) => {
@@ -33,11 +42,20 @@ const HospitalDoctor: React.FC<{ doctor: Doctor }> = ({ doctor }) => {
             <span className="text-xs">FaahFaahin: </span> {doctor.description}
           </p>
         )}
+        {
+          <p className="mt-4 ">
+            Appointments:
+            <span className="text-sm">
+              {" "}
+              {doctor.Appointments.length} Appointments
+            </span>
+          </p>
+        }
         <Link
           to="/dashboard"
           className="p-2 rounded-md mt-4 bg-black text-white text-center hover:bg-gray-900 transition"
         >
-          Appointments
+          View Appointments
         </Link>
       </div>
     </div>
