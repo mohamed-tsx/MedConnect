@@ -35,7 +35,6 @@ const MyRecentAppointment: React.FC<{ appointment: Appointment }> = ({
 }) => {
   return (
     <div className="border p-4">
-      <h2 className="text-lg font-semibold">Recent Appointment</h2>
       <div className="flex lg:flex-row items-center gap-4 font-mono">
         <RxDragHandleDots2 />
 

@@ -52,7 +52,7 @@ const HospitalDoctor: React.FC<{ doctor: Doctor }> = ({ doctor }) => {
           </p>
         }
         <Link
-          to="/dashboard"
+          to="/recentappointments"
           className="p-2 rounded-md mt-4 bg-black text-white text-center hover:bg-gray-900 transition"
         >
           View Appointments

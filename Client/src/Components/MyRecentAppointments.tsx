@@ -59,7 +59,7 @@ const MyRecentAppointments = () => {
   );
   return (
     <div className="container mx-auto my-8 p-4 rounded-md shadow-md">
-      <h2 className="text-3xl font-semibold mb-4">Available Doctors</h2>
+      <h2 className="text-3xl font-semibold mb-4">Recent Appointments</h2>
       {loading ? (
         <p className="text-gray-700 text-sm">Loading...</p>
       ) : error ? (
