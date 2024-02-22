@@ -34,6 +34,7 @@ const patientAppointments = asyncHandler(async (req, res) => {
   const patientId = req.user.id;
   const appointments = await Prisma.appointment.findMany({
     where: { patientId },
+    include: { Doctor: true },
   });
   if (!appointments) {
     res.status(404);
