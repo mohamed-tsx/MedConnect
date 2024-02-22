@@ -1,5 +1,3 @@
-// AddAppointmentModal.js
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +23,7 @@ const AddAppointmentModal: React.FC<AddAppointmentModalProps> = ({
 }) => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [appointment, setAppointments] = useState<Appointment>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +42,7 @@ const AddAppointmentModal: React.FC<AddAppointmentModalProps> = ({
           setError(result.message);
           return;
         }
+        console.log(result.appointment);
 
         // Assuming result.appointments is an array of appointments
         setAppointments(result.appointment);
@@ -64,7 +63,7 @@ const AddAppointmentModal: React.FC<AddAppointmentModalProps> = ({
           <div className="absolute inset-0 bg-gray-800 opacity-50"></div>
           <div className="bg-white p-6 rounded z-10">
             <h3 className="text-4xl text-center font-semibold mb-4">
-              {appointments.verificationCode}
+              {appointment && appointment.verificationCode}
             </h3>
             <button onClick={() => onClose()}>Close</button>
             {error && <p className="text-red-600 text-sm">{error}</p>}
