@@ -42,8 +42,23 @@ const patientAppointments = asyncHandler(async (req, res) => {
   }
   res.status(200).json({ success: true, appointments });
 });
+
+const getAllAppointMentsForDoctor = asyncHandler(async (req, res) => {
+  const doctorId = req.params.id;
+  const hospitalId = req.user.id;
+  const appointtments = await Prisma.appointment.findMany({
+    where: { doctorId, hospitalId },
+    include: { User: true },
+  });
+  if (!appointtments) {
+    res.status(404);
+    throw new Error("There's no appointments for this doctor");
+  }
+  res.status(200).json({ success: true, appointtments });
+});
 module.exports = {
   AddAppointment,
   allRecentAppointments,
   patientAppointments,
+  getAllAppointMentsForDoctor,
 };
