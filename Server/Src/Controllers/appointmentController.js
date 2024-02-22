@@ -22,7 +22,7 @@ const AddAppointment = asyncHandler(async (req, res) => {
 });
 
 const allRecentAppointments = asyncHandler(async (req, res) => {
-  const hospitalId = req.params.id;
+  const hospitalId = req.user.id;
   const appointments = await Prisma.appointment.findMany({
     where: { hospitalId },
     include: { Doctor: true, User: true },

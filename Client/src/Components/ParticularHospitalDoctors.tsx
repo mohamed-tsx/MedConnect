@@ -20,6 +20,7 @@ const ParticularHospitalDoctors = () => {
   useEffect(() => {
     const fetchAllHospitalDoctors = async () => {
       try {
+        setLoading(true);
         const res = await fetch(
           `/api/doctors/allDoctorOfParticularHospital?hospitalId=${params.hospitalId}`
         );

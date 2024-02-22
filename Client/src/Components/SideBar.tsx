@@ -74,11 +74,13 @@ const SideBar = () => {
               </li>
               <li
                 className={`mb-3 hover:bg-gray-200 ${
-                  location.pathname === "/appointments" ? "bg-gray-200" : ""
+                  location.pathname === "/recentappointments"
+                    ? "bg-gray-200"
+                    : ""
                 }`}
               >
                 <Link
-                  to="/appointments"
+                  to="/recentappointments"
                   className="flex items-center space-x-2 p-2 rounded"
                 >
                   Recent Appointments

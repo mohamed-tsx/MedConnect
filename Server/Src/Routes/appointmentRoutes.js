@@ -7,11 +7,6 @@ const { isHospital } = require("../Utils/userRoleVerifyer");
 const Verify = require("../Utils/verify");
 const router = express.Router();
 router.get("/addAppointment/:id", Verify, AddAppointment);
-router.get(
-  "/recentAppointments/:id",
-  Verify,
-  isHospital,
-  allRecentAppointments
-);
+router.get("/recentAppointments/", Verify, isHospital, allRecentAppointments);
 
 module.exports = router;

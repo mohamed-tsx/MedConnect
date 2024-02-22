@@ -8,6 +8,7 @@ import Dashboard from "./Pages/Dashboard";
 import HospitalsList from "./Pages/HospitalsList";
 import ParticularHospitalDoctors from "./Components/ParticularHospitalDoctors";
 import MyAppointments from "./Pages/MyAppointments";
+import MyRecentAppointments from "./Components/MyRecentAppointments";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/recentappointments"
+            element={<MyRecentAppointments />}
+          />
         </Route>
         <Route path="/hospitalsList" element={<HospitalsList />} />
         <Route
