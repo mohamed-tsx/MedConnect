@@ -9,6 +9,7 @@ import HospitalsList from "./Pages/HospitalsList";
 import ParticularHospitalDoctors from "./Components/ParticularHospitalDoctors";
 import MyAppointments from "./Pages/MyAppointments";
 import MyRecentAppointments from "./Components/MyRecentAppointments";
+import DoctorAppointments from "./Pages/DoctorAppointments";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
           <Route
             path="/recentappointments"
             element={<MyRecentAppointments />}
+          />
+          <Route
+            path="/doctorAppointments/:id"
+            element={<DoctorAppointments />}
           />
         </Route>
         <Route path="/hospitalsList" element={<HospitalsList />} />
