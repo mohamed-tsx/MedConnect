@@ -34,6 +34,7 @@ model Appointment {
   date             DateTime @default(now())
   patientId        String
   doctorId         String
+  hospitalId       String
   verificationCode Int      @default(autoincrement())
   Doctor           Doctor   @relation(fields: [doctorId], references: [id])
   User             User     @relation(fields: [patientId], references: [id])
